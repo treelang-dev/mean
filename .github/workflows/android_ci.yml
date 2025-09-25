@@ -15,11 +15,13 @@ jobs:
       - name: Checkout Public Repository
         uses: actions/checkout@v4
 
+      # v-- THE FIX IS HERE --v
       - name: Checkout Shared Keystore Repository
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+        # We now check for a tag push OR a manual dispatch
+        if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch')
         uses: actions/checkout@v4
         with:
-          repository: 'YourGitHubUsername/shared-android-keystore' # <-- 替换为你的！
+          repository: 'YourGitHubUsername/shared-android-keystore' # <-- Make sure this is correct!
           ssh-key: ${{ secrets.KEYSTORE_REPO_DEPLOY_KEY }}
           path: 'keystore-repo'
 
@@ -34,11 +36,14 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle (CI Check)
+        # This step should NOT run on release builds
         if: github.event_name != 'push' || !startsWith(github.ref, 'refs/tags/v')
         run: ./gradlew build
 
+      # v-- AND THE FIX IS HERE --v
       - name: Build Release APK
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+        # We now check for a tag push OR a manual dispatch
+        if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch')
         env:
           CI: "true"
           ANDROID_KEY_STORE_PASSWORD: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
@@ -46,12 +51,15 @@ jobs:
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: ./gradlew assembleRelease
 
+      # v-- AND THE FIX IS HERE --v
       - name: Create Release Draft
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+        # We now check for a tag push OR a manual dispatch
+        if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch')
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.ref_name }}
-          name: ${{ github.ref_name }}
+          # When running manually, github.ref_name is the branch name, not a tag. We need a default.
+          name: ${{ github.ref_name || 'Manual Release' }}
           draft: true
           generate_release_notes: true
-          files: app/build/outputs/apk/release/app-release.apk
+          files: app/build/outputs/apk/release/*.apk # Using wildcard for robustness
