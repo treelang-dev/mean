@@ -21,7 +21,7 @@ jobs:
         if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch')
         uses: actions/checkout@v4
         with:
-          repository: 'YourGitHubUsername/shared-android-keystore' # <-- Make sure this is correct!
+          repository: 'treelang-dev/shared-android-keystore' # <-- Make sure this is correct!
           ssh-key: ${{ secrets.KEYSTORE_REPO_DEPLOY_KEY }}
           path: 'keystore-repo'
 
