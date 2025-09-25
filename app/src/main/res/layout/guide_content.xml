@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp">
+    <com.google.android.material.card.MaterialCardView
+
+        android:id="@+id/card_view1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="24dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="16dp">
+            <com.google.android.material.button.MaterialButton
+                style="?attr/materialIconButtonFilledTonalStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:icon="@drawable/outline_info_24"
+                android:clickable="false">
+
+            </com.google.android.material.button.MaterialButton>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mean is not running"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp">
+
+            </TextView>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.card.MaterialCardView
+
+        android:id="@+id/card_view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="24dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+>
+            <com.google.android.material.button.MaterialButton
+                style="?attr/materialIconButtonFilledTonalStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:icon="@drawable/outline_perm_scan_wifi_24"
+                android:clickable="false">
+
+            </com.google.android.material.button.MaterialButton>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Start via Wireless debugging"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp">
+
+            </TextView>
+
+        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="On Android 11 or above, you can enable Wireless debugging and start Mean directly from your device, without connecting to a computer.">
+
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:text="Please click Pairing first.">
+
+            </TextView>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/pairing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/outline_link_24"
+                android:layout_marginTop="16dp"
+                android:text="Pairing">
+
+            </com.google.android.material.button.MaterialButton>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/baseline_play_arrow_24"
+                android:text="Start">
+
+            </com.google.android.material.button.MaterialButton>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.card.MaterialCardView
+
+        android:id="@+id/card_view3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="24dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.google.android.material.button.MaterialButton
+                    style="?attr/materialIconButtonFilledTonalStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    app:icon="@drawable/outline_computer_24"
+                    android:clickable="false">
+
+                </com.google.android.material.button.MaterialButton>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Start by connecting to a computer"
+                    android:layout_marginStart="16dp">
+
+                </TextView>
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="For devices without root, you need to use adb to start Mean (requires computer connection).">
+
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:text="This process needs to be repeated every time the device is restarted.">
+
+            </TextView>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/baseline_code_24"
+                android:layout_marginTop="16dp"
+                android:text="View command">
+
+            </com.google.android.material.button.MaterialButton>
+
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.card.MaterialCardView
+
+        android:id="@+id/card_view4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="24dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
+                <com.google.android.material.button.MaterialButton
+                    style="?attr/materialIconButtonFilledTonalStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    app:icon="@drawable/outline_security_24"
+                    android:clickable="false">
+
+                </com.google.android.material.button.MaterialButton>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Start (for rooted devices)"
+                    android:textStyle="bold"
+                    android:layout_marginStart="16dp">
+
+                </TextView>
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="In addition, Mean can be started automatically on boot. If not, please check if your system or third-party tools have restricted Mean.">
+
+            </TextView>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/baseline_play_arrow_24"
+                android:text="Start">
+
+            </com.google.android.material.button.MaterialButton>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.card.MaterialCardView
+
+        android:id="@+id/card_view5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="24dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.google.android.material.button.MaterialButton
+                    style="?attr/materialIconButtonFilledTonalStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    app:icon="@drawable/outline_work_off_24"
+                    android:clickable="false">
+
+                </com.google.android.material.button.MaterialButton>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Start (read-only)"
+                    android:textStyle="bold"
+                    android:layout_marginStart="16dp">
+
+                </TextView>
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="More and others, you can launch Mean with read-only mode.">
+
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:text="This mode allow you to look and check application info mostly without permission.">
+
+            </TextView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/read_only"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/baseline_arrow_forward_24"
+                android:text="Launch">
+
+            </com.google.android.material.button.MaterialButton>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.card.MaterialCardView
+
+        android:id="@+id/card_view6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="24dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+                <com.google.android.material.button.MaterialButton
+                    style="?attr/materialIconButtonFilledTonalStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    app:icon="@drawable/outline_help_outline_24"
+                    android:clickable="false">
+
+                </com.google.android.material.button.MaterialButton>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+              android:layout_gravity="center"
+                    android:layout_marginStart="16dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="About Mean">
+
+                </TextView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Do what you what to do">
+
+                    </TextView>
+                </LinearLayout>
+            </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

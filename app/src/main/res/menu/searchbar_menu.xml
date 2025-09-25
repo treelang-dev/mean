@@ -1,0 +1,19 @@
+<!-- res/menu/main_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_sort"
+        android:icon="@drawable/baseline_sort_24"
+        android:title="@string/searchbar_menu_sort"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_backup"
+        android:title="@string/searchbar_menu_backup" />
+
+    <item
+        android:id="@+id/action_import"
+        android:title="@string/searchbar_menu_import" />
+
+</menu>

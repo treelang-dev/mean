@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Mean</string>
+
+    <string name="tab_user_apps">User</string>
+    <string name="tab_system_apps">System</string>
+    <string name="tab_privilege_apps">Privilege</string>
+    <string name="tab_core_apps">Core</string>
+
+    <string name="searchview_hint">Enter text to search</string>
+    <string name="searchbar_hint">Enter text to search</string>
+    <string name="searchbar_menu_backup">Backup</string>
+    <string name="searchbar_menu_import">Import</string>
+    <string name="searchbar_menu_sort">Sort</string>
+
+    <string name="operation_icon">Operation icon</string>
+
+   </resources>

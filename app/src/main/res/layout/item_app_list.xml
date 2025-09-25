@@ -1,0 +1,71 @@
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:checkable="true"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    app:strokeWidth="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/app_icon_image_view"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@mipmap/ic_launcher"
+            android:contentDescription="应用图标"/>
+
+        <TextView
+            android:id="@+id/app_name_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintStart_toEndOf="@id/app_icon_image_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="应用名称" />
+
+        <TextView
+            android:id="@+id/app_info_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="2dp"
+            android:textAppearance="?attr/textAppearanceCaption"
+            app:layout_constraintStart_toEndOf="@id/app_icon_image_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_name_text_view"
+            tools:text="1.0.0 (100) 24.5MB (+15.2MB) API 31" />
+
+        <TextView
+            android:id="@+id/package_name_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="2dp"
+            android:textAppearance="?attr/textAppearanceCaption"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintStart_toEndOf="@id/app_icon_image_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_info_text_view"
+            tools:text="com.example.application" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

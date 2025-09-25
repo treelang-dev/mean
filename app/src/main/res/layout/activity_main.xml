@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/app_list_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <!-- Use AppBarLayout scrolling behavior instead of SearchBar
+         scrolling behavior since this demo uses an opaque AppBarLayout
+         and a non-floating SearchBar. -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        app:liftOnScroll="false"
+        app:statusBarForeground="?attr/colorSurface">
+
+        <com.google.android.material.search.SearchBar
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/searchbar_hint"
+            app:menu="@menu/searchbar_menu" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_user_apps" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_system_apps" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_privilege_apps" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_core_apps" />
+        </com.google.android.material.tabs.TabLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Elevation needs to be greater than AppBarLayout's elevation;
+         otherwise for some reason when the AppBarLayout's background
+         is not transparent, the elevation on this Toolbar doesn't show. -->
+    <FrameLayout
+        android:id="@+id/contextual_toolbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        android:visibility="gone">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/contextual_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="?attr/homeAsUpIndicator"/>
+    </FrameLayout>
+
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:id="@+id/extended_float_action"
+        android:contentDescription="cat_extended_fab_content_desc"
+        android:text="Exec command"
+        app:icon="@drawable/baseline_code_24"
+        app:layout_anchor="@id/app_list_recycler_view"
+        app:layout_anchorGravity="bottom|right|end"
+        app:layout_behavior="com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton$ExtendedFloatingActionButtonBehavior"/>
+    <com.google.android.material.search.SearchView
+        android:id="@+id/search_view"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="@string/searchview_hint"
+        app:layout_anchor="@id/search_bar">
+
+        <LinearLayout
+            android:id="@+id/open_search_view_suggestion_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 在搜索视图中也添加TabLayout -->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/search_view_tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_user_apps" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_system_apps" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_privilege_apps" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_core_apps" />
+            </com.google.android.material.tabs.TabLayout>
+
+            <!-- 在搜索视图中添加RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_view_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp" />
+        </LinearLayout>
+
+    </com.google.android.material.search.SearchView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

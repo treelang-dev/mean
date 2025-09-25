@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp">
+    <com.google.android.material.card.MaterialCardView
+
+        android:id="@+id/card_view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="24dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.button.MaterialButton
+                style="?attr/materialIconButtonFilledTonalStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:icon="@drawable/outline_info_24"
+                android:clickable="false">
+
+            </com.google.android.material.button.MaterialButton>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notification interaction"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp">
+
+            </TextView>
+
+        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="The paring process needs you to interact with a notification from Mean.\nPlease allow Mean to post notifications">
+
+            </TextView>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/baseline_output_24"
+                android:layout_marginTop="16dp"
+                android:text="Notification options">
+
+            </com.google.android.material.button.MaterialButton>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.card.MaterialCardView
+
+        android:id="@+id/card_view3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="24dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.google.android.material.button.MaterialButton
+                    style="?attr/materialIconButtonFilledTonalStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    app:icon="@drawable/outline_warning_amber_24"
+                    android:clickable="false">
+
+                </com.google.android.material.button.MaterialButton>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Warn"
+                    android:layout_marginStart="16dp">
+
+                </TextView>
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="MIUI users may need to switch notification style to &quot;Android&quot; from &quot;Notification&quot; - &quot;Notification shade&quot; in system settings.">
+
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:text="Otherwise, you may not able to enter pairing code from the notification.">
+            </TextView>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

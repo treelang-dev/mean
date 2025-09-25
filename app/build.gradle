@@ -1,0 +1,35 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace = 'com.treelang.mean'
+    compileSdkVersion = 36
+    buildToolsVersion = '36.0.0'
+
+    defaultConfig {
+        applicationId = "com.treelang.mean"
+        minSdk = 28
+        targetSdk = 36
+        versionCode = 250722
+        versionName = '1.0.1'
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+}
+
+dependencies {
+    implementation libs.material
+    implementation libs.activity
+}
