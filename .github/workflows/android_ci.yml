@@ -15,13 +15,11 @@ jobs:
       - name: Checkout Public Repository
         uses: actions/checkout@v4
 
-      # v-- THE FIX IS HERE --v
       - name: Checkout Shared Keystore Repository
-        # We now check for a tag push OR a manual dispatch
         if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch')
         uses: actions/checkout@v4
         with:
-          repository: 'treelang-dev/shared-android-keystore' # <-- Make sure this is correct!
+          repository: 'treelang-dev/shared-android-keystore' # <-- 确保这里是你的用户名和仓库名
           ssh-key: ${{ secrets.KEYSTORE_REPO_DEPLOY_KEY }}
           path: 'keystore-repo'
 
@@ -35,14 +33,14 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      # v-- THE FIX IS HERE --v
       - name: Build with Gradle (CI Check)
-        # This step should NOT run on release builds
-        if: github.event_name != 'push' || !startsWith(github.ref, 'refs/tags/v')
-        run: ./gradlew build
+        if: (github.event_name != 'push' && !startsWith(github.ref, 'refs/tags/v')) && (github.event_name != 'workflow_dispatch')
+        # We changed the command to only build the debug variant.
+        # This avoids touching the release signing config altogether.
+        run: ./gradlew assembleDebug
 
-      # v-- AND THE FIX IS HERE --v
       - name: Build Release APK
-        # We now check for a tag push OR a manual dispatch
         if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch')
         env:
           CI: "true"
@@ -51,15 +49,12 @@ jobs:
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: ./gradlew assembleRelease
 
-      # v-- AND THE FIX IS HERE --v
       - name: Create Release Draft
-        # We now check for a tag push OR a manual dispatch
         if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch')
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref_name }}
-          # When running manually, github.ref_name is the branch name, not a tag. We need a default.
+          tag_name: ${{ github.ref_name || format('manual-{0}', github.run_id) }}
           name: ${{ github.ref_name || 'Manual Release' }}
           draft: true
           generate_release_notes: true
-          files: app/build/outputs/apk/release/*.apk # Using wildcard for robustness
+          files: app/build/outputs/apk/release/*.apk
