@@ -1,3 +1,5 @@
+# 文件路径: .github/workflows/android_ci.yml
+
 name: Android CI/CD
 
 on:
@@ -15,14 +17,22 @@ jobs:
       - name: Checkout Public Repository
         uses: actions/checkout@v4
 
+      # v-- THE FINAL FIX IS HERE --v
+      - name: Configure Git for SSH
+        # This step forces all git traffic for github.com to use SSH.
+        # This is crucial because our Deploy Key is an SSH key, and the checkout action
+        # sometimes defaults to HTTPS, causing an authentication failure.
+        if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch')
+        run: git config --global url."git@github.com:".insteadOf "https://github.com/"
+
       - name: Checkout Shared Keystore Repository
         if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch')
         uses: actions/checkout@v4
         with:
-          repository: 'treelang-dev/shared-android-keystore' # <-- 确保这里是你的用户名和仓库名
+          repository: 'treelang-dev/shared-android-keystore'
           ssh-key: ${{ secrets.KEYSTORE_REPO_DEPLOY_KEY }}
           path: 'keystore-repo'
-          ref: 'main'
+          ref: 'main' #
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -34,11 +44,8 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      # v-- THE FIX IS HERE --v
       - name: Build with Gradle (CI Check)
         if: (github.event_name != 'push' && !startsWith(github.ref, 'refs/tags/v')) && (github.event_name != 'workflow_dispatch')
-        # We changed the command to only build the debug variant.
-        # This avoids touching the release signing config altogether.
         run: ./gradlew assembleDebug
 
       - name: Build Release APK
