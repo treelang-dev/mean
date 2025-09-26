@@ -658,7 +658,7 @@ public class MainActivity extends ComponentActivity {
         appListAdapter = new AppListAdapter();
 
         // Enhanced performance optimizations
-        appListRecyclerView.setHasFixedSize(true);
+        // appListRecyclerView.setHasFixedSize(true);
         appListRecyclerView.setItemViewCacheSize(20); // Increased cache size
 
         // Use shared RecyclerView.RecycledViewPool for better memory efficiency
