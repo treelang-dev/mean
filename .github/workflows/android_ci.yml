@@ -4,24 +4,27 @@ name: Android CI/CD
 
 on:
   push:
-    branches: ["master"]
+    branches: ["master"] # 或者 main
     tags: ["v*.*.*"]
   pull_request:
-    branches: ["master"]
+    branches: ["master"] # 或者 main
   workflow_dispatch:
 
 jobs:
   build_and_release:
     runs-on: ubuntu-latest
+
+    # v-- THE FINAL FIX IS HERE --v
+    # We explicitly grant the GITHUB_TOKEN write permissions for the "contents" of the repo.
+    # This is required for the action to be able to create a release.
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout Public Repository
         uses: actions/checkout@v4
 
-      # v-- THE FINAL FIX IS HERE --v
       - name: Configure Git for SSH
-        # This step forces all git traffic for github.com to use SSH.
-        # This is crucial because our Deploy Key is an SSH key, and the checkout action
-        # sometimes defaults to HTTPS, causing an authentication failure.
         if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch')
         run: git config --global url."git@github.com:".insteadOf "https://github.com/"
 
@@ -32,7 +35,9 @@ jobs:
           repository: 'treelang-dev/shared-android-keystore'
           ssh-key: ${{ secrets.KEYSTORE_REPO_DEPLOY_KEY }}
           path: 'keystore-repo'
-          ref: 'main' #
+          ref: 'main'
+
+      # ... (后续所有步骤都保持不变) ...
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
